@@ -1,13 +1,29 @@
+<h1>{{ book.title }} {{ book.author }}</h1>
+<h2>Specs</h2>
+<ul>
+    <li>OS: {{ book.ISBN }}</li>
+    <li>Launched: {{ book.publish_year }}</li>
+    <li>Price: {{book.sale_currency}} {{ book.price }}</li>
+    <li>SKU: {{ book.sku }}</li>
+</ul>
+
+detail.html
+Long ago
+28 May 2019
+
+bluelime 247learning uploaded an item
+HTML
+detail.html
 <!doctype html>
 <html lang="en">
 {% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Ian's first webapp">
-    <meta name="author" content="Ian Wanjala and others">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Bookshop Django App</title>
+    <title>Bluelime courses</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -30,31 +46,21 @@
         }
       }
     </style>
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
   </head>
   <body>
+
 
 <main role="main">
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Book Detail</h1>
-      <p class="lead text-muted"> {{book.title}} </p>
-      <img src = " {{ book.image.url }}" >
-      <br>
-      <p class="lead text-muted">Written by - {{book.author}} </p>
-      <h5>Other details</h5>
-      
-    <p class="lead text-muted">ISBN:  {{ book.ISBN }}</p>
-    <p class="lead text-muted">Launche date: {{ book.publish_year }}</p>
-    <p class="lead text-muted">Price in {{book.sale_currency}}: {{ book.price }}</p>
-    <p class="lead text-muted">Stock Keeping Unit: {{ book.sku }}</p>    
-    <p class="lead text-muted">Genre: {{ book.genre }}</p>
-    <p class="lead text-muted">Publisher: {{ book.publisher }}</p>
-
+      <h1 class="jumbotron-heading">Course Detail</h1>
+      <p class="lead text-muted"> {{ course.summary}}.</p>
+      <img src = " {{ course.image.url }}" height=300></img>
       <p>
-      <br>
         <a href="{% url 'index' %}" class="btn btn-primary my-2">Back</a>
-
       </p>
 
     </div>
@@ -63,7 +69,23 @@
   <div class="album py-5 bg-light">
     <div class="container">
 
-     
+      <div class="row">
+        {% for course in courses.all %}
+
+        <div class="col-md-4">
+
+          <div class="card mb-4 shadow-sm">
+             <img class ="card-img-top" src="{{course.image.url}}">
+            <div class="card-body">
+              <p class="card-text"> {{ course.summary}}</p>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
 
 </main>
 

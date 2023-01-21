@@ -13,12 +13,32 @@ def index(request):
      #   'book_list': book_list,
       #  'num_books': num_books,
     #}
-    books=Book.objects
+    books=Book.objects.all        
+    #publisher=Publisher.count.get()
+    #publisher.entry_set.all()
+   # print(publisher)
+    #genre = Genre.count.get()
+   # genre.entry_set.all()
+    #print(genre)
+
    # return HttpResponse(render(request, 'storecatalog/index.html', context))
     return render(request, 'storecatalog/index.html', {'books':books})
 #// view function to return book details for selected book
+
+
 def bookdetail(request, book_id):
     book_detail = get_object_or_404(Book, pk=book_id)
-   # genre = get_object_or_404(Genre,fk=genre )
+    genre = Genre.objects.get(pk=book_id)
+    #print (genre)
+    publisher=Publisher.objects.get(pk=book_id)
     #publisher=get_object_or_404(Publisher,fk=publisher)
     return render(request, 'storecatalog/bookdetail.html',{'book':book_detail})
+
+def genrelist(request):
+    genres=Genre.objects.all
+  
+    return render(request, 'storecatalog/genrelist.html',{'genres':genres}) 
+def publisherlist(request):
+    publishers=Publisher.objects.all
+  
+    return render(request, 'storecatalog/publisherlist.html',{'publishers':publishers})

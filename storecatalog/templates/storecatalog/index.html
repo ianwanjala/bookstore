@@ -44,16 +44,18 @@
       <h1 class="jumbotron-heading">Bookstore Solutions</h1>
       <p class="lead text-muted">Welcome to our bookstore. We provide 24/7 book management.</p>
       <p>
-        <a href="mailto:ian.lukuya@strathmore.edu" class="btn btn-primary my-2">Email us</a>
-        <a href="publishers" class="btn btn-info my-2">Browse our Publishers</a>        
-        <a href="genre/list" class="btn btn-info my-2">Browse our Genres</a>
+        <a href="mailto:ian.lukuya@strathmore.edu" class="btn btn-primary my-2">Email us</a>        
+        <a href="publishers" class="btn btn-primary my-2">View Publishers</a>
+        <a href="/genres" class="btn btn-primary my-2">View Genres</a>
+
+        
 
       </p>
-      <img src="{% static 'logo.png' %}" height=200></img>
+      <img src="{% static 'logo.png' %}" height=200>
     </div>
     
   </section>
-
+<center><h5>Available Books</h5> </center>
   <div class="album py-5 bg-light">
     <div class="container">
 
@@ -65,10 +67,13 @@
           <div class="card mb-4 shadow-sm">
             <a href="{% url 'bookdetail' book.id %}">
 
-             <img class ="card-img-top" src="{{book.image.url}}" height = 225 width=90%></img>
+             <img class ="card-img-top" src="{{book.image.url}}" height = 225 width=90%>
             </a>
             <div class="card-body">
-              <p class="card-text"> {{ book.title}} </p>
+              <p class="card-text"> Title: {{ book.title}} </p>
+              <p class="card-text"> Genre:  {{ book.genre.genre_name}} </p>
+              <p class="card-text"> Publisher: {{ book.publisher}} </p>
+
             </div>
           </div>
         </div>
