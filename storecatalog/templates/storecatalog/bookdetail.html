@@ -48,8 +48,8 @@
     <p class="lead text-muted">Launche date: {{ book.publish_year }}</p>
     <p class="lead text-muted">Price in {{book.sale_currency}}: {{ book.price }}</p>
     <p class="lead text-muted">Stock Keeping Unit: {{ book.sku }}</p>    
-    <p class="lead text-muted">Genre: {{ book.genre }}</p>
-    <p class="lead text-muted">Publisher: {{ book.publisher }}</p>
+    <p class="lead text-muted">Genre: {{ book.genre.genre_name }}</p>
+    <p class="lead text-muted">Publisher: {{ book.publisher.name }}</p>
 
       <p>
       <br>

@@ -65,9 +65,11 @@
         <div class="col-md-4">
 
           <div class="card mb-4 shadow-sm">
+          
             <a href="{% url 'bookdetail' book.id %}">
-
+           {% if book.image %}
              <img class ="card-img-top" src="{{book.image.url}}" height = 225 width=90%>
+             {% endif %}
             </a>
             <div class="card-body">
               <p class="card-text"> Title: {{ book.title}} </p>
